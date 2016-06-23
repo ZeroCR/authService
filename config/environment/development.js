@@ -27,12 +27,12 @@ module.exports = {
     SENDGRIDID_API_KEY: ''
   },
   
-  DOMAIN: 'http://localhost:3000',
+  DOMAIN: 'http://localhost:3002',
   oauth: {
     facebook: {
       clientID: '',
       clientSecret: '',
-      callbackURL: 'https://arthas-zerocr.c9.io/api/auth/facebook/callback',
+      callbackURL: 'https://localhost:3002/api/auth/facebook/callback',
       apiVersion: ''
     },
     twitter: {

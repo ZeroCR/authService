@@ -13,7 +13,7 @@ module.exports = app => {
 	// 	{
 	// 		res.status(401).json({ErrorMessage: 'invalid token'});
 	// 	}
-	// });
+	// }); 
 	// Insert routes below
-	app.use('/api/s/things', require('./things/thingsController'));
+	app.use('/api/auth', require('./auth/authController'));
 };

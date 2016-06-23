@@ -4,10 +4,10 @@ const bodyParser = require('body-parser');
 const errorHandler = require('errorhandler');
 const methodOverride = require('method-override');
 const helmet = require('helmet');
-
 const app = express();
 
-
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+const config = require('./config/environment');
 
 // Configuration
 app.use(helmet());
@@ -25,7 +25,7 @@ if (env === 'development') {
 // require('./config/express')(app);
 require('./api/routes')(app);
 
-app.listen(3000, function () {
+app.listen(config.port, function () {
 	console.log('Demo Express server listening on port %d in %s mode', 3000, app.settings.env);
 });
 
