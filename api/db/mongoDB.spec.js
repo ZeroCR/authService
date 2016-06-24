@@ -1,5 +1,5 @@
-var assert = require("assert");
-var dbService = require("./mongoDB.js");
+const assert = require("assert");
+const dbService = require("./mongoDB.js");
 
 describe("Database", () => {
 	describe("Get dataBase", () => {

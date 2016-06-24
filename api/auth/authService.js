@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');

@@ -1,10 +1,10 @@
 'use strict';
 
-var userService = require("./userService"),
+let userService = require("./userService"),
 	assert = require("assert");
 
 describe("Users data", () => {
-	var users;
+	let users;
 	before((done) => {
 		userService.seedUser().then(userService.getUsers)
 		.then(results => {

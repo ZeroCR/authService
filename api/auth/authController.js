@@ -24,7 +24,7 @@ router.post('/signUp',  (req,res) => {
 
 router.get('/verifyEmail', async (req,res) => {
 	try {
-		await authService.verifyEmail(req.query.token)
+		await authService.verifyEmail(req.query.token);
 		res.redirect(config.DOMAIN + '/signUpPassword?token=' + req.query.token);
 	} catch (err) {
 		res.status(500).json({wasSuccessful: 'false', ErrorMessage: err.message});
@@ -34,7 +34,7 @@ router.get('/verifyEmail', async (req,res) => {
 router.post('/signUpPassword', async (req,res) => {
 	try {
 		let password = req.body.password;
-		const user = await authService.signUpPassword(req.query.token, password)
+		const user = await authService.signUpPassword(req.query.token, password);
 		const token = authService.createJWT(user);
 		res.json({ token: token });
 	} catch (err) {
@@ -49,7 +49,7 @@ router.post('/logout', (req, res) => {
 
 router.post('/login', async (req, res) => {
 	try {
-		const user = await authService.login(req.body.email, req.body.password)
+		const user = await authService.login(req.body.email, req.body.password);
 		const token = authService.createJWT(user);
 		res.json({ token: token });	
 	} catch (err) {

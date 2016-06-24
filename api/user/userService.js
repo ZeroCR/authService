@@ -1,53 +1,53 @@
 'use strict';
 //var ObjectId = require('mongodb').ObjectID;
-var database = require('../db/mongoDB.js');
-var userModel = require('./userModel');
+const database = require('../db/mongoDB.js');
+const userModel = require('./userModel');
 
-var getUsers = async (where, select) => {
+const getUsers = async (where, select) => {
 	select = select || {};
 	where = where || {};
-	let db = await database.getDb();
-	let user = await db.user.find(where, select).toArrayAsync();
+	const db = await database.getDb();
+	const user = await db.user.find(where, select).toArrayAsync();
 	return user;
 };
 
-var addUser = async user => {
-	let db = await database.getDb();
-	let result = await db.user.insertOneAsync(user);
+const addUser = async user => {
+	const db = await database.getDb();
+	const result = await db.user.insertOneAsync(user);
 	return result;
 };
 
-var getUser = async (where, select) => {
+const getUser = async (where, select) => {
 	select = select || {};
 	where = where || {};
-	let db = await database.getDb();
-	let user = await db.user.findOneAsync(where, select);
+	const db = await database.getDb();
+	const user = await db.user.findOneAsync(where, select);
 	return user;
 };
 
-var updateUser = async (where, update) => {
-	let db = await database.getDb();
-	let result = await db.user.updateOneAsync(where, update);
+const updateUser = async (where, update) => {
+	const db = await database.getDb();
+	const result = await db.user.updateOneAsync(where, update);
 	return result;
 };
 
-var updateAndGetUser = async (where, update, options) => {
-	let db = await database.getDb();
-	let user = await db.user.findOneAndUpdateAsync( where, update, options);
+const updateAndGetUser = async (where, update, options) => {
+	const db = await database.getDb();
+	const user = await db.user.findOneAndUpdateAsync( where, update, options);
 	return user;
 };
 
-var seedUser = async () => {
-	let users = await getUsers();
+const seedUser = async () => {
+	const users = await getUsers();
 	if (users.length === 0) {
-		let db = await database.getDb();
-		var user = userModel.Create({
+		const db = await database.getDb();
+		const user = userModel.Create({
             name: 'Edgar',
             lastName: 'Hernandez',
             email: 'ed1g2a3r@gmail.com',
             active: true
         });
-		let result = await db.user.insertOneAsync(user);
+		const result = await db.user.insertOneAsync(user);
 		return result;
 	}
 };

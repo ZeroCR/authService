@@ -1,6 +1,6 @@
 'use strict';
 
-var assert = require("assert"),
+const assert = require("assert"),
 	userModel = require("./userModel"),
 	userService = require("./userService"),
 	ObjectId = require('mongodb').ObjectID;
@@ -9,25 +9,25 @@ describe("User Services", () => {
 		
 	describe("Get User", () => {
 		it("Get User by Id", done => {
-			var objectId = new ObjectId("5599b1bcde888ba70643b3bf");
-			userService.getUser({_id: objectId}, {_id:true}).then(
+			const objectId = new ObjectId("5599b1bcde888ba70643b3bf");
+			userService.getUser({_id: objectId}, {_id: true}).then(
 				(user) => {
 					assert(user._id.equals(objectId));
 					done();
-				},(err) => {throw err});
+				},(err) => { throw err});
 		});
 		
 		it("Get Users", done => {
-			userService.getUsers({},{_id:true, name:true}).then(
+			userService.getUsers({},{_id: true, name: true}).then(
 				(users) => {
 					assert(users);
 					done();
-				}, (err) => {throw err});
+				}, (err) => { throw err});
 		});
 		
 		it("Get User by Email", done => {
-			var userEmail = "ed1g2a3r@gmail.com";
-			userService.getUser({email: userEmail}, {_id:true}).then(
+			const userEmail = "ed1g2a3r@gmail.com";
+			userService.getUser({email: userEmail}, {_id: true}).then(
 				(user) => {
 					assert(!!user);
 					done();
@@ -37,7 +37,7 @@ describe("User Services", () => {
 		
 	describe("Save User", () => {
 		it("It is a valid user", () => {
-			var user = userModel.Create({
+			const user = userModel.Create({
 				name: "edgar",
 				lastName: "test",
 				email: "test@test.com"

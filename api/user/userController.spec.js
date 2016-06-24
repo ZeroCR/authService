@@ -1,6 +1,6 @@
 "use strict";
 
-var assert = require("assert"),
+const assert = require("assert"),
   request = require("supertest"),
   app = require("../../app.js"), 
   agent = request.agent(app);
