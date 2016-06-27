@@ -1,6 +1,6 @@
 'use strict';
 const router = require('express').Router();
-const ObjectId = require('mongodb').ObjectID;
+const objectId = require('mongodb').ObjectID;
 const userService = require('./userService.js');
 const userModel = require('./userModel.js');
 
@@ -27,8 +27,8 @@ router.route('/')
 
 router.use('/:userId', async (req,res,next) => {
 	try {
-		const objectId = new ObjectId(req.params.userId);
-		const user = await userService.getUser({_id: objectId});
+		const objId = new objectId(req.params.userId);
+		const user = await userService.getUser({_id: objId});
 
 		if (user) {
 			req.user = user;

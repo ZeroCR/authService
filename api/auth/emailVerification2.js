@@ -4,13 +4,13 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const fs = require('fs');
 const config = require('../../config/environment');
-const sendgrid  = require('sendgrid')(config.secrets.SENDGRIDID_API_KEY);
+const sendgrid = require('sendgrid')(config.secrets.SENDGRIDID_API_KEY);
 
 const model = {
 	verifyUrl: config.DOMAIN + '/api/auth/verifyEmail?token=',
 	title: 'MopTek',
 	subTitle: 'Thanks for signing up!',
-	body:'Thanks for signing up with Moptek! You must follow this link to activate your account:'
+	body: 'Thanks for signing up with Moptek! You must follow this link to activate your account:'
 };
 
 const send = async (newUser) => {
@@ -32,7 +32,9 @@ const send = async (newUser) => {
 	});
 	
 	sendgrid.send(email, (err, json) => { 
-		if (err) console.log(err);
+		if (err) {
+			console.log(err);
+		}
 	});
 };
 

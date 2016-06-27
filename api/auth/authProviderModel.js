@@ -5,8 +5,7 @@ const sanitizer = require('auto-sanitize').sanitizeObject;
 const _ = require('lodash');
 const properties = ['providerType', 'id', 'accessToken', 'email'];
 
-const Create = args => {
-	args = args || {};
+const create = (args = {}) => {
 	
 	let authProvider = {};
 
@@ -33,19 +32,19 @@ const hasValidData = authProvider => {
 		}
 	}
 	
-	if(authProvider.providerType) {
+	if (authProvider.providerType) {
 		if (!validator.isAlpha(authProvider.providerType)) {
 			throw new Error('The authProvider providerType is invalid');
 		}
 	}
 	
-	if(authProvider.accessToken) {
-		if(!_.isString(authProvider.accessToken)) {
+	if (authProvider.accessToken) {
+		if (!_.isString(authProvider.accessToken)) {
 			throw new Error('The authProvider accessToken is invalid');
 		}
 	}
 	
-	if(authProvider.email) {
+	if (authProvider.email) {
 		if (!validator.isEmail(authProvider.email)) {
 			throw new Error('The authProvider email is invalid');
 		}
@@ -54,4 +53,4 @@ const hasValidData = authProvider => {
 	return true;
 };
 
-module.exports.Create = Create;
+module.exports.create = create;

@@ -1,7 +1,7 @@
 'use strict';
 
-let userService = require("./userService"),
-	assert = require("assert");
+const userService = require("./userService");
+const	assert = require("assert");
 
 describe("Users data", () => {
 	let users;

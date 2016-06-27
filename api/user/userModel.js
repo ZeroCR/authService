@@ -7,8 +7,7 @@ const sanitizer = require('auto-sanitize').sanitizeObject;
 
 const properties = [ '_id', 'name', 'lastName', 'email', 'active', 'picture', 'friendIDs', 'authProviders' ];
 
-const Create = args => {
-	args = args || {};
+const Create = (args = {}) => {
 	
 	let user = {};
 
@@ -22,7 +21,7 @@ const Create = args => {
 	
 	user = sanitizer(user);
 	
-	if(hasValidData(user)) {
+	if (hasValidData(user)) {
 		return user;
 	}
 };
@@ -43,37 +42,37 @@ const hasValidData = user => {
 	}
   
 	if (user.lastName) {
-		if(!_.isString(user.lastName) || user.lastName.length > 150) {
+		if (!_.isString(user.lastName) || user.lastName.length > 150) {
 			throw new Error('The user lastName is invalid');
 		}
 	}
 	
 	if (user.email) {
-		if(!validator.isEmail(user.email)) {
+		if (!validator.isEmail(user.email)) {
 			throw new Error('The user email is invalid');
 		}
 	}
 	
-	if(user.active) {
-		if(!validator.isBoolean(user.active)) {
+	if (user.active) {
+		if (!validator.isBoolean(user.active)) {
 			throw new Error('The user active is invalid');
 		}
 	}
 	
-	if(user.picture) {
-		if(!validator.isURL(user.picture)) {
+	if (user.picture) {
+		if (!validator.isURL(user.picture)) {
 			throw new Error('The user picture is invalid');
 		}
 	}
 	
-	if(user.friendIDs) {
-		if(!_.isArray(user.friendIDs)) {
+	if (user.friendIDs) {
+		if (!_.isArray(user.friendIDs)) {
 			throw new Error('The user friendIDs is invalid');
 		}
 	}
 	
-	if(user.authProviders) {
-		if(!_.isArray(user.authProviders)) {
+	if (user.authProviders) {
+		if (!_.isArray(user.authProviders)) {
 			throw new Error('The user authProviders is invalid');
 		}
 	}
